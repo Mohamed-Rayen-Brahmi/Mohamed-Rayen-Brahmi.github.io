@@ -18,10 +18,7 @@ export default function Projects() {
       >
         <span className="section-label">Selected Work</span>
         <h2 className="section-title mt-3">Projects</h2>
-        <p className="mx-auto mt-4 max-w-xl text-ink-200">
-          A collection of work spanning cloud platforms, game engines, design tools, and
-          desktop applications.
-        </p>
+        
       </motion.div>
 
       {/* Split panels with glowing divider */}
