@@ -546,7 +546,7 @@ export default function HeroSequence() {
             style={{ opacity: 0 }}
           >
             <div className="text-center px-4">
-              <span className="section-label">Selected Work</span>
+              <span className="section-label"></span>
               <h2 className="section-title mt-3">Projects</h2>
               <p className="mt-4 text-ink-200">Continue scrolling to explore</p>
             </div>

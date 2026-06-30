@@ -16,7 +16,6 @@ export default function Projects() {
         transition={{ duration: 0.8 }}
         className="mx-auto mb-16 max-w-7xl px-6 text-center lg:px-10"
       >
-        <span className="section-label">Selected Work</span>
         <h2 className="section-title mt-3">Projects</h2>
         
       </motion.div>
