@@ -7,7 +7,7 @@ const milestones = [
     year: '2023',
     title: 'Began Information Systems Development',
     description:
-      'Started my Diploma at the Higher Institute of Technological Studies of Mahdia, diving into Java, JavaScript, and full-stack fundamentals.',
+      'Started my Diploma at the Higher Institute of Technological Studies of Mahdia, diving into Java, JavaScript, and full-stack fundamentals. Graduated in 2026.',
     icon: Code,
   },
   {
@@ -32,10 +32,10 @@ const milestones = [
     icon: Award,
   },
   {
-    year: '2026',
+    year: 'Jun 2026',
     title: 'CloudVM & Graduation',
     description:
-      'Delivered CloudVM, a self-hosted IaaS platform, as my final-year capstone at ReaddlyTech, and graduated with a Diploma in Information Systems Development.',
+      'Delivered CloudVM — a self-hosted IaaS platform — as my final-year capstone at ReaddlyTech, and graduated with a Diploma in Information Systems Development from ISET Mahdia.',
     icon: GraduationCap,
   },
 ];

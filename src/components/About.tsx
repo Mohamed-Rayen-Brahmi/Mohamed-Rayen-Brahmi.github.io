@@ -68,8 +68,8 @@ export default function About() {
               owning a project from architecture all the way through deployment.
             </p>
             <p className="mb-8 text-base leading-relaxed text-ink-200">
-              I'm currently finishing a Diploma in Information Systems Development at the Higher
-              Institute of Technological Studies of Mahdia, alongside volunteering as webmaster
+              I hold a Diploma in Information Systems Development from the Higher Institute of
+              Technological Studies of Mahdia (graduated 2026), and I volunteer as Webmaster
               for CIS ISET Bizerte. When I'm not shipping features, I'm exploring new
               technologies and looking for the next problem worth solving.
             </p>
