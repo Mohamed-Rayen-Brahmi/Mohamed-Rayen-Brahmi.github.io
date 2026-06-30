@@ -405,7 +405,7 @@ export default function HeroSequence() {
                       NEVER moves. Static for the entire animation.
                     */}
                     <img
-                      src="/katana/sheath.png"
+                      src="/katana/sheath.webp"
                       alt=""
                       aria-hidden
                       style={{
@@ -438,7 +438,7 @@ export default function HeroSequence() {
                       }}
                     >
                       <img
-                        src="/katana/blade.png"
+                        src="/katana/blade.webp"
                         alt="katana sword"
                         aria-hidden
                         style={{

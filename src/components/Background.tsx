@@ -16,6 +16,7 @@ interface Particle {
 export default function Background() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rafRef = useRef<number>(0);
+  const activeRef = useRef<boolean>(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -44,7 +45,8 @@ export default function Background() {
     resize();
 
     const isMobile = width < 768;
-    const count = isMobile ? 40 : reduceMotion ? 20 : 90;
+    // Reduced counts: mobile 25, desktop 60 (was 40/90)
+    const count = isMobile ? 25 : reduceMotion ? 15 : 60;
     const particles: Particle[] = [];
 
     for (let i = 0; i < count; i++) {
@@ -64,6 +66,11 @@ export default function Background() {
     }
 
     function draw() {
+      if (!activeRef.current) {
+        rafRef.current = requestAnimationFrame(draw);
+        return;
+      }
+
       context.clearRect(0, 0, width, height);
       for (const p of particles) {
         p.x += p.vx;
@@ -100,9 +107,16 @@ export default function Background() {
       rafRef.current = requestAnimationFrame(draw);
     }
 
+    // Pause the draw loop when the document is hidden (tab switch, minimise)
+    const onVisibility = () => {
+      activeRef.current = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
     if (!reduceMotion) {
       draw();
     } else {
+      // Static snapshot for reduced-motion users
       draw();
       cancelAnimationFrame(rafRef.current);
     }
@@ -117,6 +131,7 @@ export default function Background() {
     return () => {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener('resize', onResize);
+      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, []);
 
@@ -125,24 +140,22 @@ export default function Background() {
       {/* Deep base gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-ink-950 via-ink-900 to-ink-950" />
 
-      {/* Moving radial gradients */}
+      {/*
+        Decorative glow blobs — STATIC (no animate-drift).
+        blur() on animated elements is the #1 GPU killer.
+        Static blobs look identical and cost ~0 to render.
+      */}
       <div
-        className="absolute -top-1/4 left-1/4 h-[60vh] w-[60vh] rounded-full opacity-20 blur-[120px] animate-drift"
+        className="absolute -top-1/4 left-1/4 h-[60vh] w-[60vh] rounded-full opacity-20 blur-[120px]"
         style={{ background: 'radial-gradient(circle, rgba(46,65,86,0.6), transparent 70%)' }}
       />
       <div
-        className="absolute top-1/3 -right-1/4 h-[50vh] w-[50vh] rounded-full opacity-15 blur-[100px] animate-drift"
-        style={{
-          background: 'radial-gradient(circle, rgba(255,142,43,0.4), transparent 70%)',
-          animationDelay: '7s',
-        }}
+        className="absolute top-1/3 -right-1/4 h-[50vh] w-[50vh] rounded-full opacity-15 blur-[100px]"
+        style={{ background: 'radial-gradient(circle, rgba(255,142,43,0.4), transparent 70%)' }}
       />
       <div
-        className="absolute bottom-0 left-1/3 h-[40vh] w-[40vh] rounded-full opacity-10 blur-[90px] animate-drift"
-        style={{
-          background: 'radial-gradient(circle, rgba(111,138,163,0.5), transparent 70%)',
-          animationDelay: '13s',
-        }}
+        className="absolute bottom-0 left-1/3 h-[40vh] w-[40vh] rounded-full opacity-10 blur-[90px]"
+        style={{ background: 'radial-gradient(circle, rgba(111,138,163,0.5), transparent 70%)' }}
       />
 
       {/* Subtle fog layer */}
