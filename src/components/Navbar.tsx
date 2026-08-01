@@ -63,8 +63,8 @@ export default function Navbar() {
             className="flex items-center gap-2.5 group"
           >
             <div className="relative">
-              <Swords className="h-5 w-5 text-ember-400 transition-transform duration-500 group-hover:rotate-12" />
-              <div className="absolute inset-0 blur-md text-ember-400 opacity-50">
+              <Swords className="h-5 w-5 text-[#B01818] transition-transform duration-500 group-hover:rotate-12" />
+              <div className="absolute inset-0 blur-md text-[#B01818] opacity-50">
                 <Swords className="h-5 w-5" />
               </div>
             </div>

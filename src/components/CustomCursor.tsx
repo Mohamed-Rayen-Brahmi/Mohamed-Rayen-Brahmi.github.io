@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
+import { Sword, Zap, Type, Crosshair } from 'lucide-react';
 
 export default function CustomCursor() {
   const [hidden, setHidden] = useState(true);
   const [hovering, setHovering] = useState(false);
+  const [writing, setWriting] = useState(false);
   const [clicking, setClicking] = useState(false);
+  const [inRevealZone, setInRevealZone] = useState(false);
 
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 350, mass: 0.5 };
+  const springConfig = { damping: 25, stiffness: 400, mass: 0.5 };
   const cursorX = useSpring(x, springConfig);
   const cursorY = useSpring(y, springConfig);
 
@@ -18,7 +21,11 @@ export default function CustomCursor() {
     if (isTouch) return;
 
     setHidden(false);
-    document.body.style.cursor = 'none';
+
+    // Force hide native cursor everywhere
+    const style = document.createElement('style');
+    style.innerHTML = '* { cursor: none !important; }';
+    document.head.appendChild(style);
 
     const move = (e: MouseEvent) => {
       x.set(e.clientX);
@@ -27,7 +34,28 @@ export default function CustomCursor() {
 
     const over = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.closest('a, button, [data-cursor="hover"], input, textarea')) {
+      
+      // Reveal Zone (Hide global cursor)
+      if (target.closest('[data-cursor="reveal"]')) {
+        setInRevealZone(true);
+        setHovering(false);
+        setWriting(false);
+        return;
+      } else {
+        setInRevealZone(false);
+      }
+
+      // Writing (Inputs)
+      if (target.closest('input, textarea')) {
+        setWriting(true);
+        setHovering(false);
+        return;
+      } else {
+        setWriting(false);
+      }
+
+      // Hovering (Buttons/Links)
+      if (target.closest('a, button, [data-cursor="hover"]')) {
         setHovering(true);
       } else {
         setHovering(false);
@@ -43,7 +71,7 @@ export default function CustomCursor() {
     window.addEventListener('mouseup', up);
 
     return () => {
-      document.body.style.cursor = '';
+      document.head.removeChild(style);
       window.removeEventListener('mousemove', move);
       window.removeEventListener('mouseover', over);
       window.removeEventListener('mousedown', down);
@@ -55,45 +83,69 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Outer ring */}
+      {/* Main Cursor Element */}
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9999] flex items-center justify-center"
-        style={{ x: cursorX, y: cursorY }}
+        className="pointer-events-none fixed top-0 left-0 z-[10000] flex items-center justify-center"
+        style={{ 
+          x, 
+          y,
+          translateX: '-50%',
+          translateY: '-50%',
+        }}
+        animate={{
+          opacity: inRevealZone ? 0 : 1,
+          scale: clicking ? 1.3 : 1,
+        }}
+        transition={{ type: 'spring', damping: 15, stiffness: 400 }}
       >
-        <motion.div
-          className="rounded-full border"
-          animate={{
-            width: hovering ? 48 : 28,
-            height: hovering ? 48 : 28,
-            borderColor: hovering
-              ? 'rgba(255, 142, 43, 0.8)'
-              : 'rgba(159, 177, 194, 0.5)',
-            backgroundColor: hovering
-              ? 'rgba(255, 142, 43, 0.08)'
-              : 'rgba(159, 177, 194, 0.03)',
-            scale: clicking ? 0.85 : 1,
-          }}
-          transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-          style={{ translateX: '-50%', translateY: '-50%' }}
-        />
-      </motion.div>
-
-      {/* Inner dot */}
-      <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9999]"
-        style={{ x, y }}
-      >
-        <motion.div
-          className="rounded-full"
-          animate={{
-            width: hovering ? 6 : 5,
-            height: hovering ? 6 : 5,
-            backgroundColor: hovering ? '#ff8e2b' : '#9fb1c2',
-            scale: clicking ? 1.5 : 1,
-          }}
-          transition={{ type: 'spring', damping: 20, stiffness: 400 }}
-          style={{ translateX: '-50%', translateY: '-50%' }}
-        />
+        <AnimatePresence mode="wait">
+          {clicking ? (
+            <motion.div
+              key="click"
+              initial={{ scale: 0.5, rotate: -45, opacity: 0 }}
+              animate={{ scale: 1, rotate: 0, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ duration: 0.1 }}
+            >
+              <Zap className="h-7 w-7 text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] fill-white" />
+            </motion.div>
+          ) : writing ? (
+            <motion.div
+              key="write"
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ duration: 0.15 }}
+            >
+              <Type className="h-5 w-5 text-ember-400" />
+            </motion.div>
+          ) : hovering ? (
+            <motion.div
+              key="hover"
+              initial={{ scale: 0.5, opacity: 0, rotate: -45 }}
+              animate={{ scale: 1, opacity: 1, rotate: 0 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ duration: 0.15 }}
+            >
+              <Crosshair className="h-6 w-6 text-[#ff8e2b]" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="sword"
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1, rotate: 45 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              // Offset the sword so the tip is at the mouse point
+              className="relative -top-[10px] -left-[10px]"
+            >
+              <Sword 
+                className="h-6 w-6 text-[#B01818]" 
+                strokeWidth={2.5} 
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </>
   );

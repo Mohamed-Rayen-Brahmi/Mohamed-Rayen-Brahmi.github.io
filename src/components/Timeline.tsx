@@ -1,42 +1,36 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { GraduationCap, Rocket, Award, Code } from 'lucide-react';
 
 const milestones = [
   {
     year: '2023',
     title: 'Began Information Systems Development',
     description:
-      'Started my Diploma at the Higher Institute of Technological Studies of Mahdia, diving into Java, JavaScript, and full-stack fundamentals. Graduated in 2026.',
-    icon: Code,
+      'Started my Diploma at the Higher Institute of Technological Studies of Mahdia, diving into Java, JavaScript, and full-stack fundamentals.',
   },
   {
     year: 'Jan 2024',
     title: 'First Industry Exposure',
     description:
       'IT & QA observation internship at Eleonetech, shadowing bug tracking and software testing workflows across the development lifecycle.',
-    icon: Rocket,
   },
   {
     year: 'Jun 2025',
     title: 'AI-Powered Recruitment Platform',
     description:
       'Built Resume Scanner at MehdiSkills, combining Spring Boot, React, and NLP for automated resume-to-job matching.',
-    icon: GraduationCap,
   },
   {
     year: 'Jan 2026',
     title: 'CIS ISET Bizerte Webmaster',
     description:
       "Took on the volunteer Webmaster role, redesigning the club's website and managing its digital presence.",
-    icon: Award,
   },
   {
     year: 'Jun 2026',
     title: 'CloudVM & Graduation',
     description:
       'Delivered CloudVM — a self-hosted IaaS platform — as my final-year capstone at ReaddlyTech, and graduated with a Diploma in Information Systems Development from ISET Mahdia.',
-    icon: GraduationCap,
   },
 ];
 
@@ -57,29 +51,33 @@ export default function Timeline() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-16 text-center"
+          className="mb-20 text-center"
         >
-          <span className="section-label">The road so far</span>
-          <h2 className="section-title mt-3">Timeline</h2>
+          <span className="mb-4 block text-xs font-bold tracking-[0.3em] text-[#B01818]">
+            五 · TIMELINE
+          </span>
+          <h2 className="text-5xl font-black uppercase tracking-tighter text-white sm:text-6xl lg:text-7xl">
+            The Path
+          </h2>
         </motion.div>
 
-        <div ref={containerRef} className="relative">
-          {/* Track */}
-          <div className="absolute left-4 top-0 h-full w-px bg-ink-600 md:left-1/2 md:-translate-x-1/2" />
+        <div ref={containerRef} className="relative mt-24">
+          {/* Background Track */}
+          <div className="absolute left-4 top-0 h-full w-px bg-white/5 md:left-1/2 md:-translate-x-1/2" />
 
-          {/* Progress line */}
+          {/* Red Progress line */}
           <motion.div
             style={{ height: lineHeight }}
-            className="absolute left-4 top-0 w-px bg-gradient-to-b from-ember-400 to-ember-600 md:left-1/2 md:-translate-x-1/2"
+            className="absolute left-4 top-0 w-px bg-[#B01818] md:left-1/2 md:-translate-x-1/2"
           >
             <div
               className="absolute inset-0"
-              style={{ boxShadow: '0 0 12px rgba(255,142,43,0.6)' }}
+              style={{ boxShadow: '0 0 12px rgba(176,24,24,0.6)' }}
             />
           </motion.div>
 
           {/* Milestones */}
-          <div className="space-y-12">
+          <div className="space-y-16">
             {milestones.map((milestone, i) => (
               <motion.div
                 key={milestone.year}
@@ -87,24 +85,31 @@ export default function Timeline() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6 }}
-                className={`relative flex items-start gap-6 md:items-center ${
+                className={`relative flex items-start gap-8 md:items-center ${
                   i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
               >
                 {/* Node */}
-                <div className="relative z-10 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border-2 border-ember-400 bg-ink-950 md:absolute md:left-1/2 md:-translate-x-1/2">
-                  <div className="h-2 w-2 rounded-full bg-ember-400" style={{ boxShadow: '0 0 8px rgba(255,142,43,0.8)' }} />
+                <div className="relative z-10 flex h-8 w-8 flex-shrink-0 items-center justify-center bg-ink-950 md:absolute md:left-1/2 md:-translate-x-1/2">
+                  <div className="h-3 w-3 rotate-45 bg-[#B01818]" style={{ boxShadow: '0 0 8px rgba(176,24,24,0.8)' }} />
                 </div>
 
-                {/* Content card */}
+                {/* Content */}
                 <div className={`flex-1 ${i % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
-                  <div className="rounded-2xl border border-white/5 bg-ink-800/40 p-5 backdrop-blur-sm transition-colors hover:border-white/10">
-                    <div className={`mb-2 flex items-center gap-2 ${i % 2 === 0 ? 'md:justify-end' : ''}`}>
-                      <milestone.icon className="h-4 w-4 text-ember-400" />
-                      <span className="text-sm font-bold text-ember-400">{milestone.year}</span>
-                    </div>
-                    <h3 className="mb-2 text-lg font-bold text-white">{milestone.title}</h3>
-                    <p className="text-sm leading-relaxed text-ink-200">{milestone.description}</p>
+                  <div className="group relative border border-white/5 bg-ink-950 p-6 transition-colors hover:border-white/10">
+                    {/* Hover bracket accents */}
+                    <div className="absolute left-0 top-0 h-3 w-3 border-l-2 border-t-2 border-transparent transition-colors group-hover:border-[#B01818]" />
+                    <div className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-transparent transition-colors group-hover:border-[#B01818]" />
+                    
+                    <span className="mb-2 block text-xs font-bold tracking-[0.2em] text-[#B01818]">
+                      {milestone.year}
+                    </span>
+                    <h3 className="mb-3 text-xl font-black uppercase tracking-tight text-white transition-colors group-hover:text-[#B01818]">
+                      {milestone.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-ink-300">
+                      {milestone.description}
+                    </p>
                   </div>
                 </div>
 

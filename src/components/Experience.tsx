@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Briefcase } from 'lucide-react';
 
 const experiences = [
   {
@@ -9,10 +8,9 @@ const experiences = [
     description:
       'Designed and built a Cloud VM Management Platform enabling provisioning, monitoring, and lifecycle control of virtual machines via a web interface.',
     achievements: [
-      'Implemented backend services with Spring Boot and REST APIs to interface with cloud infrastructure, handling VM creation, start/stop, and resource tracking',
-      'Developed a responsive React dashboard for real-time VM status, metrics visualization, and admin controls',
-      'Integrated authentication and role-based access control (RBAC) for secure multi-user environments',
-      'Delivered a fully functional platform as the capstone of the Information Systems Development program',
+      'Implemented backend services with Spring Boot and REST APIs to interface with cloud infrastructure',
+      'Developed a responsive React dashboard for real-time VM status and admin controls',
+      'Integrated authentication and role-based access control (RBAC)',
     ],
   },
   {
@@ -22,9 +20,8 @@ const experiences = [
     description:
       'Managing and maintaining the official CIS ISET Bizerte website, ensuring an up-to-date and professional online presence.',
     achievements: [
-      "Redesigned and enhanced the website's visual identity, improving UI/UX and overall aesthetics",
-      'Handle all social media accounts, creating and publishing engaging content to grow community reach',
-      "Coordinate digital communications between the club and its student audience across multiple platforms",
+      "Redesigned and enhanced the website's visual identity, improving UI/UX",
+      'Coordinate digital communications between the club and its student audience',
     ],
   },
   {
@@ -34,19 +31,8 @@ const experiences = [
     description:
       'Built Resume Scanner, an AI-powered recruitment platform for automated resume–job description matching.',
     achievements: [
-      'Integrated NLP-based skill extraction and cosine similarity scoring using Python (Flask microservice)',
-      'Connected a Spring Boot backend with a React frontend for real-time AI-driven candidate ranking',
-      'Reduced manual screening effort significantly by automating keyword extraction and similarity analysis',
-    ],
-  },
-  {
-    role: 'IT & QA Intern (Observation)',
-    company: 'Eleonetech · Tunisia',
-    period: 'Jan 2024',
-    description:
-      'Shadowed bug tracking and software testing workflows, gaining exposure to the full software development lifecycle.',
-    achievements: [
-      'Participated in QA sessions covering test case writing, defect reporting, and issue triage',
+      'Integrated NLP-based skill extraction and cosine similarity scoring using Python',
+      'Connected a Spring Boot backend with a React frontend for real-time candidate ranking',
     ],
   },
 ];
@@ -60,10 +46,14 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-16 text-center"
+          className="mb-20 text-center"
         >
-          <span className="section-label">Career journey</span>
-          <h2 className="section-title mt-3">Experience</h2>
+          <span className="mb-4 block text-xs font-bold tracking-[0.3em] text-[#B01818]">
+            四 · JOURNEY
+          </span>
+          <h2 className="text-5xl font-black uppercase tracking-tighter text-white sm:text-6xl lg:text-7xl">
+            Experience
+          </h2>
         </motion.div>
 
         <div className="space-y-6">
@@ -74,30 +64,38 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group relative rounded-2xl border border-white/5 bg-ink-800/40 p-6 backdrop-blur-sm transition-all hover:border-white/10 hover:bg-ink-800/60 md:p-8"
+              className="group relative border border-white/10 bg-ink-950 p-8 transition-colors hover:border-white/20"
             >
-              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+              {/* Corner brackets */}
+              <div className="absolute left-0 top-0 h-4 w-4 border-l-2 border-t-2 border-white/10 transition-colors group-hover:border-[#B01818]" />
+              <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-white/10 transition-colors group-hover:border-[#B01818]" />
+
+              <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
                 <div className="flex-1">
-                  <div className="mb-2 flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-ink-700/50">
-                      <Briefcase className="h-5 w-5 text-ember-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-white">{exp.role}</h3>
-                      <p className="text-sm text-steel-300">{exp.company}</p>
-                    </div>
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-black uppercase tracking-tight text-white transition-colors group-hover:text-[#B01818]">
+                      {exp.role}
+                    </h3>
+                    <p className="mt-1 text-sm font-bold uppercase tracking-wider text-ink-400">
+                      {exp.company}
+                    </p>
                   </div>
-                  <p className="mb-4 text-sm leading-relaxed text-ink-200">{exp.description}</p>
-                  <ul className="space-y-2">
+                  
+                  <p className="mb-6 text-sm leading-relaxed text-ink-300">
+                    {exp.description}
+                  </p>
+                  
+                  <ul className="space-y-3">
                     {exp.achievements.map((achievement, ai) => (
-                      <li key={ai} className="flex items-start gap-2 text-sm text-ink-100">
-                        <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-ember-400" />
+                      <li key={ai} className="flex items-start gap-3 text-sm text-ink-200">
+                        <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rotate-45 bg-[#B01818]" />
                         {achievement}
                       </li>
                     ))}
                   </ul>
                 </div>
-                <span className="flex-shrink-0 rounded-full border border-white/10 bg-ink-700/50 px-4 py-1.5 text-xs font-medium text-steel-200">
+                
+                <span className="flex-shrink-0 border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white">
                   {exp.period}
                 </span>
               </div>
