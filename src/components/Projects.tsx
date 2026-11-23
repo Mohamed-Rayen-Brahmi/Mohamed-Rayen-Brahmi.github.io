@@ -4,13 +4,43 @@ import ProjectCard, { type GithubRepo } from './ProjectCard';
 // Hardcoded curated projects requested by the user
 const CURATED_PROJECTS: GithubRepo[] = [
   {
+    id: 5,
+    name: 'Mission Carthage',
+    status: 'Live',
+    image: '/projects/mission-carthage.webp',
+    description: 'Coding platform I co-founded and built for Tunisian high-school students: nearly 500 accounts and 8,600 visits last month. A course, 152 game missions, an online compiler and corrected exams, with Python, C, PHP and MySQL running in the browser.',
+    html_url: 'https://missioncarthage.tn',
+    homepage: 'https://missioncarthage.tn',
+    topics: ['React', 'Pyodide', 'Cloudflare D1', 'PWA'],
+    language: 'TypeScript',
+    stargazers_count: 0,
+    forks_count: 0,
+    updated_at: new Date().toISOString(),
+  },
+  {
     id: 1,
     name: 'CloudVM',
-    description: 'A self-hosted Infrastructure-as-a-Service (IaaS) platform built for VM provisioning and lifecycle control. Features browser-based SSH/VNC, real-time monitoring, and Stripe billing.',
+    status: 'Internship project',
+    image: 'https://res.cloudinary.com/dsjglgcnu/image/upload/c_fill,w_960,h_540,g_north,f_auto,q_auto/v1782813359/Capture_d_%C3%A9cran_2026-06-16_112745_h5zn6v.png',
+    description: 'Final-year project at ReaddlyTech: a cloud platform to create, monitor and manage virtual machines from a web interface. Microservices on Docker, PostgreSQL and Redis, JWT / MFA / OAuth2 auth with RBAC, and Stripe billing.',
     html_url: 'https://github.com/Mohamed-Rayen-Brahmi',
     homepage: '',
-    topics: ['NestJS', 'Spring Boot', 'React', 'OpenNebula', 'Docker'],
+    topics: ['NestJS', 'Next.js', 'Python', 'Docker', 'Redis'],
     language: 'TypeScript',
+    stargazers_count: 0,
+    forks_count: 0,
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: 6,
+    name: 'Teach2Reach',
+    status: 'Live',
+    image: '/projects/teach2reach.webp',
+    description: 'Official website for Teach2Reach, the AI for education hackathon at ISET Bizerte, organized by IEEE CIS, IEEE WIE and SOS ISET Bizerte. A date-aware one-pager with countdown, teaser video and strict security headers, deployed on Cloudflare Pages.',
+    html_url: 'https://teach2reach.pages.dev',
+    homepage: 'https://teach2reach.pages.dev',
+    topics: ['HTML/CSS', 'Cloudflare Pages', 'Event Site'],
+    language: 'JavaScript',
     stargazers_count: 0,
     forks_count: 0,
     updated_at: new Date().toISOString(),
@@ -18,35 +48,69 @@ const CURATED_PROJECTS: GithubRepo[] = [
   {
     id: 2,
     name: 'Golazio',
-    description: 'Live interactive platform (formerly futIQ). Built for high-performance delivery and sleek user experience.',
+    status: 'Live',
+    image: '/projects/golazio.webp',
+    description: 'Real-time multiplayer football quiz (formerly FUTIQ). Players join game rooms and play live against each other, with a daily challenge to come back for.',
     html_url: 'https://golazio.me/',
     homepage: 'https://golazio.me/',
-    topics: ['React', 'Next.js', 'Tailwind', 'Framer Motion'],
+    topics: ['Next.js', 'WebSockets', 'Real-time'],
     language: 'TypeScript',
     stargazers_count: 0,
     forks_count: 0,
     updated_at: new Date().toISOString(),
   },
   {
-    id: 3,
-    name: 'DevQuest',
-    description: 'Gamified developer career networking RPG platform concept where developer profiles function as character classes that gain XP through real-world achievements.',
+    id: 7,
+    name: 'Sticky Summit',
+    status: 'In development',
+    image: '/projects/sticky-summit.webp',
+    description: 'Slime rage-climber for web game portals, in development in Godot 4. Fling a sticky slime up a 150 m tower through five zones of butter ice, jelly pads, conveyor belts, fans and spikes. Built for CrazyGames.',
     html_url: 'https://github.com/Mohamed-Rayen-Brahmi',
     homepage: '',
-    topics: ['React', 'Node.js', 'Tailwind CSS', 'Gamification'],
-    language: 'JavaScript',
+    topics: ['Godot 4', 'HTML5 Game', 'Game Design'],
+    language: 'GDScript',
     stargazers_count: 0,
     forks_count: 0,
     updated_at: new Date().toISOString(),
   },
   {
-    id: 4,
-    name: 'CV Generator',
-    description: 'Automated platform to instantly generate professional, ATS-friendly CVs. Features dynamic templating and data extraction.',
+    id: 8,
+    name: 'Afterhours',
+    status: 'In development',
+    image: '/projects/afterhours.webp',
+    description: 'Co-op horror-comedy for Android, in development in Unity 6. One to six recovery workers grab, carry and throw physics-driven loot out of abandoned facilities while dodging monsters, with online multiplayer and solo play.',
     html_url: 'https://github.com/Mohamed-Rayen-Brahmi',
     homepage: '',
-    topics: ['React', 'PDF Generation', 'Tailwind CSS'],
-    language: 'TypeScript',
+    topics: ['Unity 6', 'Netcode', 'Android'],
+    language: 'C#',
+    stargazers_count: 0,
+    forks_count: 0,
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: 9,
+    name: 'CivicBot',
+    status: 'Project',
+    image: '/projects/civicbot.webp',
+    description: 'Software for a semi-autonomous, multilingual robot. It spots incidents on camera with YOLOv8 and answers people by voice in several languages, using Whisper and a local Phi-3 model through Ollama.',
+    html_url: 'https://github.com/Mohamed-Rayen-Brahmi',
+    homepage: '',
+    topics: ['YOLOv8', 'Whisper', 'Ollama', 'IoT'],
+    language: 'Python',
+    stargazers_count: 0,
+    forks_count: 0,
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: 10,
+    name: 'MedTun',
+    status: 'Project',
+    image: 'https://res.cloudinary.com/dsjglgcnu/image/upload/c_fill,w_960,h_540,g_north,f_auto,q_auto/v1782813200/image_original_qx0wgx.png',
+    description: 'Medical appointment booking platform: a Spring Boot REST API with JWT authentication and role-based access for patients, doctors and admins, and a React interface.',
+    html_url: 'https://github.com/Mohamed-Rayen-Brahmi',
+    homepage: '',
+    topics: ['Spring Boot', 'React', 'MySQL', 'JWT'],
+    language: 'Java',
     stargazers_count: 0,
     forks_count: 0,
     updated_at: new Date().toISOString(),
@@ -54,8 +118,9 @@ const CURATED_PROJECTS: GithubRepo[] = [
 ];
 
 export default function Projects() {
-  const leftProjects = CURATED_PROJECTS.slice(0, 2);
-  const rightProjects = CURATED_PROJECTS.slice(2, 4);
+  // Alternate cards between the two columns so the list reads in order, left then right
+  const leftProjects = CURATED_PROJECTS.filter((_, i) => i % 2 === 0);
+  const rightProjects = CURATED_PROJECTS.filter((_, i) => i % 2 === 1);
 
   return (
     <section id="projects" className="relative min-h-screen py-24 lg:py-32">
@@ -74,8 +139,8 @@ export default function Projects() {
           The Arsenal
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-ink-300">
-          Curated projects and live platforms forged with precision. 
-          From cloud infrastructure to gamified networking and production-ready applications.
+          Curated projects and live platforms forged with precision.
+          From ed-tech used by real students and cloud infrastructure to applied AI and games in the making.
         </p>
       </motion.div>
 
@@ -95,14 +160,14 @@ export default function Projects() {
           {/* Left panel */}
           <div className="space-y-8">
             {leftProjects.map((repo, i) => (
-              <ProjectCard key={repo.id} repo={repo} index={i} />
+              <ProjectCard key={repo.id} repo={repo} index={i * 2} />
             ))}
           </div>
 
           {/* Right panel */}
           <div className="space-y-8 lg:mt-24">
             {rightProjects.map((repo, i) => (
-              <ProjectCard key={repo.id} repo={repo} index={i + 2} />
+              <ProjectCard key={repo.id} repo={repo} index={i * 2 + 1} />
             ))}
           </div>
         </div>

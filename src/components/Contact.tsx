@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { Github, Linkedin, ArrowRight, Check } from 'lucide-react';
+import { Github, Linkedin, ArrowRight, Check, FileDown } from 'lucide-react';
 
 const EMAILJS_SERVICE_ID = 'service_atgzwba';
 const EMAILJS_TEMPLATE_ID = 'template_2kevojq';
@@ -39,7 +39,7 @@ export default function Contact() {
           from_name: form.name,
           from_email: form.email,
           message: form.message,
-          to_email: 'brahmi.mouhamedrayen@hotmail.com',
+          to_email: 'brahmi.mohamed.rayen1@gmail.com',
         },
         { publicKey: EMAILJS_PUBLIC_KEY },
       );
@@ -110,10 +110,10 @@ export default function Contact() {
               <div>
                 <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#B01818]">Email</p>
                 <a
-                  href="mailto:brahmi.mouhamedrayen@hotmail.com"
+                  href="mailto:brahmi.mohamed.rayen1@gmail.com"
                   className="text-lg font-medium text-white transition-colors hover:text-[#B01818]"
                 >
-                  brahmi.mouhamedrayen@hotmail.com
+                  brahmi.mohamed.rayen1@gmail.com
                 </a>
               </div>
 
@@ -130,6 +130,26 @@ export default function Contact() {
               <div>
                 <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#B01818]">Location</p>
                 <p className="text-lg font-medium text-white">Bizerte, Tunisia</p>
+              </div>
+
+              <div>
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#B01818]">Résumé (PDF)</p>
+                <div className="flex flex-wrap gap-x-6 gap-y-2">
+                  <a
+                    href="/cv/Mohamed_Rayen_Brahmi_CV_EN.pdf"
+                    download
+                    className="inline-flex items-center gap-2 text-lg font-medium text-white transition-colors hover:text-[#B01818]"
+                  >
+                    <FileDown className="h-4 w-4" /> English
+                  </a>
+                  <a
+                    href="/cv/Mohamed_Rayen_Brahmi_CV_FR.pdf"
+                    download
+                    className="inline-flex items-center gap-2 text-lg font-medium text-white transition-colors hover:text-[#B01818]"
+                  >
+                    <FileDown className="h-4 w-4" /> Français
+                  </a>
+                </div>
               </div>
 
               <div className="pt-8">

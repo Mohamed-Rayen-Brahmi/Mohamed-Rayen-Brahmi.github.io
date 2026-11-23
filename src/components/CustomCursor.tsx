@@ -35,8 +35,18 @@ export default function CustomCursor() {
     const over = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       
-      // Reveal Zone (Hide global cursor)
-      if (target.closest('[data-cursor="reveal"]')) {
+      // Reveal Zone (Hide global cursor), except over a link or button nested
+      // inside it (e.g. the hero buttons), which must keep a visible cursor.
+      // A card that is itself the reveal zone keeps the cursor hidden.
+      const revealZone = target.closest('[data-cursor="reveal"]');
+      const interactive = target.closest('a, button, input, textarea');
+      if (revealZone && interactive && interactive !== revealZone && revealZone.contains(interactive)) {
+        setInRevealZone(false);
+        setWriting(false);
+        setHovering(true);
+        return;
+      }
+      if (revealZone) {
         setInRevealZone(true);
         setHovering(false);
         setWriting(false);

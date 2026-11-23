@@ -4,9 +4,9 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 const milestones = [
   {
     year: '2023',
-    title: 'Began Information Systems Development',
+    title: 'ISET Mahdia & First Clients',
     description:
-      'Started my Diploma at the Higher Institute of Technological Studies of Mahdia, diving into Java, JavaScript, and full-stack fundamentals.',
+      'Started my diploma in Information Systems Development at ISET Mahdia, and began freelancing in React and Node.js for clients abroad.',
   },
   {
     year: 'Jan 2024',
@@ -30,7 +30,19 @@ const milestones = [
     year: 'Jun 2026',
     title: 'CloudVM & Graduation',
     description:
-      'Delivered CloudVM — a self-hosted IaaS platform — as my final-year capstone at ReaddlyTech, and graduated with a Diploma in Information Systems Development from ISET Mahdia.',
+      'Delivered CloudVM, a cloud platform for managing virtual machines, as my final-year project at ReaddlyTech, and graduated in Information Systems Development from ISET Mahdia.',
+  },
+  {
+    year: 'Oct 2026',
+    title: 'Mission Carthage Launches',
+    description:
+      'Co-founded and launched missioncarthage.tn, a coding platform for Tunisian high-school students. Nearly 500 accounts and 8,600 visits in its last month.',
+  },
+  {
+    year: 'Nov 2026',
+    title: 'University Space Opens',
+    description:
+      'Opened fac.missioncarthage.tn, a second, paid space for university students, and built the Teach2Reach hackathon website for CIS ISET Bizerte.',
   },
 ];
 

@@ -3,19 +3,27 @@ import { motion } from 'framer-motion';
 const skillCategories = [
   {
     title: 'Languages',
-    skills: ['Java', 'TypeScript', 'JavaScript', 'Python', 'Kotlin', 'C#'],
+    skills: ['TypeScript', 'JavaScript', 'Python', 'Java', 'PHP', 'C', 'SQL', 'C#'],
   },
   {
     title: 'Frontend',
-    skills: ['React', 'Next.js', 'Angular', 'Tailwind CSS', 'Framer Motion'],
+    skills: ['React', 'Next.js', 'Angular', 'HTML / CSS', 'Tailwind CSS', 'Vite'],
   },
   {
     title: 'Backend',
-    skills: ['Spring Boot', 'NestJS', 'Node.js', 'Flask', 'NATS JetStream'],
+    skills: ['Node.js', 'NestJS', 'Spring Boot', 'Flask', 'ASP.NET', 'REST & WebSockets'],
   },
   {
-    title: 'Infra & DB',
-    skills: ['Docker', 'PostgreSQL', 'MySQL', 'Redis', 'OpenNebula/KVM'],
+    title: 'Data',
+    skills: ['PostgreSQL', 'MySQL', 'SQLite (Cloudflare D1)', 'Redis', 'Supabase', 'Firebase'],
+  },
+  {
+    title: 'DevOps & Tools',
+    skills: ['Docker', 'Git / GitHub', 'Cloudflare (Pages, D1, R2)', 'Vercel', 'Playwright', 'Vitest'],
+  },
+  {
+    title: 'AI & Security',
+    skills: ['NLP & LLMs (Ollama, Phi-3)', 'Whisper', 'YOLOv8', 'AI agents (Claude Code)', 'JWT · OAuth2 · MFA', 'RBAC'],
   },
 ];
 
@@ -38,7 +46,7 @@ export default function Skills() {
           </h2>
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((category, ci) => (
             <motion.div
               key={category.title}

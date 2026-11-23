@@ -120,7 +120,7 @@ export default function HeroSequence() {
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: '+=220%',
+          end: '+=120%', // keep equal to the section height above minus 100vh
           pin: pin,
           scrub: 1.4,
           anticipatePin: 1,
@@ -231,7 +231,7 @@ export default function HeroSequence() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <div ref={sectionRef} id="home" className="relative" style={{ height: '320vh' }}>
+    <div ref={sectionRef} id="home" className="relative" style={{ height: '220vh' }}>
       <div 
         ref={pinRef} 
         onMouseMove={handleMouseMove}
@@ -333,16 +333,31 @@ export default function HeroSequence() {
                   marginBottom: '1.5rem',
                 }}
               >
-                <span style={{ width: 32, height: 1, background: '#B01818', display: 'block' }} />
-                <span style={{
-                  fontFamily: "'Inter', system-ui",
-                  fontSize: '0.7rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.3em',
-                  color: '#B01818',
-                  textTransform: 'uppercase',
-                }}>
-                  零 · PORTFOLIO · M.26
+                {/* Availability badge (replaces the old "PORTFOLIO" eyebrow, same height) */}
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.6rem',
+                    padding: '0.4rem 0.85rem',
+                    border: '1px solid rgba(62,207,142,0.35)',
+                    background: 'rgba(62,207,142,0.08)',
+                    fontFamily: "'Inter', system-ui",
+                    fontSize: '0.68rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.2em',
+                    color: '#e8fff4',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#3ecf8e] opacity-60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-[#3ecf8e]" />
+                  </span>
+                  <span style={{ whiteSpace: 'nowrap' }}>
+                    Available for work
+                    <span className="hidden lg:inline"> · On-site / Hybrid / Remote</span>
+                  </span>
                 </span>
               </motion.div>
 
@@ -389,8 +404,8 @@ export default function HeroSequence() {
                   letterSpacing: '0.01em',
                 }}
               >
-                I build scalable web applications, AI-powered platforms, and cloud
-                infrastructure — from Spring Boot APIs to React dashboards.
+                Full-stack developer in Bizerte, Tunisia. I co-founded and built
+                Mission Carthage, a coding platform with nearly 500 students.
               </motion.p>
 
               <motion.div

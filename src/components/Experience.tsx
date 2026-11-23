@@ -2,15 +2,38 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
+    role: 'Co-founder & Developer',
+    company: 'Mission Carthage · missioncarthage.tn',
+    period: 'Oct 2026 — Present',
+    description:
+      'A coding platform for Tunisian high-school students, from 2ème année to the bac: a course, 152 game missions, an online compiler and corrected exam papers. Nearly 500 accounts and 8,600 visits in the last month.',
+    achievements: [
+      'Built the whole app: React, TypeScript, Vite and Tailwind CSS on the client, a REST API on Cloudflare Pages Functions with D1 (SQLite) and R2, Google and Microsoft OAuth, payments and an admin panel',
+      'Student code runs in the browser with no server: Python through Pyodide, plus a compiler for the school "Algo" notation, a C interpreter, a PHP interpreter and a MySQL engine I wrote myself',
+      'More than 1,400 automated tests (Vitest): every exercise correction is executed before each release',
+      'November 2026: launched a second, paid space for university students (fac.missioncarthage.tn)',
+    ],
+  },
+  {
     role: 'Software Development Intern — Final Year Project',
     company: 'ReaddlyTech · Tunisia',
     period: 'Feb 2026 — Jun 2026',
     description:
-      'Designed and built a Cloud VM Management Platform enabling provisioning, monitoring, and lifecycle control of virtual machines via a web interface.',
+      'A cloud platform for managing virtual machines (NestJS, Next.js, Python): creating, monitoring and controlling the VM lifecycle from a web interface.',
     achievements: [
-      'Implemented backend services with Spring Boot and REST APIs to interface with cloud infrastructure',
-      'Developed a responsive React dashboard for real-time VM status and admin controls',
-      'Integrated authentication and role-based access control (RBAC)',
+      'Microservices architecture with Docker, PostgreSQL and Redis',
+      'JWT, MFA and OAuth2 authentication with role-based access control (RBAC)',
+      'Subscription billing with Stripe',
+    ],
+  },
+  {
+    role: 'Freelance Full-Stack Developer',
+    company: 'Remote · International clients',
+    period: '2023 — Present',
+    description:
+      'React and Node.js development for clients abroad.',
+    achievements: [
+      'Wrote end-to-end Playwright tests for an online auction site (GunAuction)',
     ],
   },
   {
@@ -18,10 +41,10 @@ const experiences = [
     company: 'CIS ISET Bizerte · Tunisia',
     period: 'Jan 2026 — Present',
     description:
-      'Managing and maintaining the official CIS ISET Bizerte website, ensuring an up-to-date and professional online presence.',
+      "Maintaining and redesigning the club's website.",
     achievements: [
-      "Redesigned and enhanced the website's visual identity, improving UI/UX",
-      'Coordinate digital communications between the club and its student audience',
+      "Redesigned the club website's visual identity and UI",
+      'Built teach2reach.pages.dev, the website for Teach2Reach, the AI for education hackathon run by IEEE CIS, IEEE WIE and SOS ISET Bizerte',
     ],
   },
   {
@@ -29,10 +52,10 @@ const experiences = [
     company: 'MehdiSkills · Tunisia',
     period: 'Jun 2025',
     description:
-      'Built Resume Scanner, an AI-powered recruitment platform for automated resume–job description matching.',
+      'Built Resume Scanner (Spring Boot, React, Python / Flask), which reads the skills out of a CV and ranks candidates against a job offer.',
     achievements: [
-      'Integrated NLP-based skill extraction and cosine similarity scoring using Python',
-      'Connected a Spring Boot backend with a React frontend for real-time candidate ranking',
+      'NLP skill extraction from resumes in Python / Flask',
+      'Candidate ranking by cosine similarity with the job offer, shown in a React interface backed by Spring Boot',
     ],
   },
 ];

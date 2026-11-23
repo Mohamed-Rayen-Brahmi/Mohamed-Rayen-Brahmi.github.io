@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Swords } from 'lucide-react';
+import { Menu, X, Swords, FileDown } from 'lucide-react';
 
 const links = [
   { label: 'Home', href: '#home' },
   { label: 'Projects', href: '#projects' },
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -102,14 +103,40 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setMenuOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-ink-100 md:hidden"
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <div className="flex items-center gap-3">
+            {/* CV download, always visible: one pill, two languages */}
+            <div className="flex items-center overflow-hidden rounded-full border border-ember-400/50 text-xs font-bold uppercase tracking-wider text-ink-100">
+              <span className="flex items-center gap-1.5 py-2 pl-4 pr-2 text-ember-400">
+                <FileDown className="h-3.5 w-3.5" />
+                CV
+              </span>
+              <a
+                href="/cv/Mohamed_Rayen_Brahmi_CV_EN.pdf"
+                download
+                aria-label="Download CV in English (PDF)"
+                className="border-l border-ember-400/30 px-3 py-2 transition-colors hover:bg-ember-400 hover:text-ink-950"
+              >
+                EN
+              </a>
+              <a
+                href="/cv/Mohamed_Rayen_Brahmi_CV_FR.pdf"
+                download
+                aria-label="Télécharger le CV en français (PDF)"
+                className="border-l border-ember-400/30 py-2 pl-3 pr-4 transition-colors hover:bg-ember-400 hover:text-ink-950"
+              >
+                FR
+              </a>
+            </div>
+
+            {/* Mobile toggle */}
+            <button
+              onClick={() => setMenuOpen((v) => !v)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-ink-100 md:hidden"
+              aria-label="Toggle menu"
+            >
+              {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
       </motion.nav>
 

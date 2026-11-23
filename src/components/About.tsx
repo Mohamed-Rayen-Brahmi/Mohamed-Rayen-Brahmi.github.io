@@ -108,29 +108,39 @@ export default function About() {
             
             <div className="space-y-6 text-base leading-relaxed text-ink-300">
               <p>
-                I'm a Full-Stack Developer who treats code like a blade—it must be sharp, 
-                efficient, and meticulously crafted. My expertise lies in building scalable web applications, 
-                AI-powered platforms, and complex cloud infrastructure.
+                I'm a junior full-stack developer based in Bizerte, Tunisia. I treat code like a blade: it
+                has to be sharp, and it has to be tested. I built the whole of Mission Carthage
+                (missioncarthage.tn), a coding platform for Tunisian high-school students, and it now
+                runs on more than 1,400 automated tests.
               </p>
               <p>
-                Operating across the stack with Java (Spring Boot), React, Next.js, Python, and cloud VM orchestration. 
-                I don't just write code; I architect systems that solve real problems.
+                My main stack is React, TypeScript, Node.js / NestJS, REST APIs, PostgreSQL and Docker,
+                alongside Python / Flask, Java / Spring Boot and applied AI (NLP, LLMs, Whisper). I work
+                with AI agents such as Claude Code every day.
               </p>
               <p>
-                I hold a degree in Information Systems Development from ISET Mahdia (2026), and currently serve as 
-                Webmaster for CIS ISET Bizerte.
+                I graduated from ISET Mahdia in Information Systems Development (2026), I volunteer as
+                webmaster for CIS ISET Bizerte, and I'm available now for on-site, hybrid or remote roles.
               </p>
             </div>
 
-            {/* Aesthetic Stats block without generic progress bars */}
+            {/* Stats taken from the CV (Mission Carthage figures are for the last month) */}
             <div className="mt-12 grid grid-cols-2 gap-8 border-t border-white/10 pt-12">
               <div>
-                <div className="text-4xl font-black text-white">04<span className="text-[#B01818]">+</span></div>
-                <div className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-ink-400">Professional Roles</div>
+                <div className="text-4xl font-black text-white"><span className="text-[#B01818]">~</span>500</div>
+                <div className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-ink-400">Student Accounts</div>
               </div>
               <div>
-                <div className="text-4xl font-black text-white">12<span className="text-[#B01818]">+</span></div>
-                <div className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-ink-400">Core Technologies</div>
+                <div className="text-4xl font-black text-white">8.6<span className="text-[#B01818]">K</span></div>
+                <div className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-ink-400">Visits Last Month</div>
+              </div>
+              <div>
+                <div className="text-4xl font-black text-white">1,400<span className="text-[#B01818]">+</span></div>
+                <div className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-ink-400">Automated Tests</div>
+              </div>
+              <div>
+                <div className="text-4xl font-black text-white">05</div>
+                <div className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-ink-400">Professional Roles</div>
               </div>
             </div>
           </motion.div>

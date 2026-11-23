@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
-import { ArrowUpRight, Star, GitFork } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export interface GithubRepo {
   id: number;
@@ -13,7 +13,20 @@ export interface GithubRepo {
   stargazers_count: number;
   forks_count: number;
   updated_at: string;
+  /** Shown as the card's badge, e.g. "Live" or "In development" */
+  status?: ProjectStatus;
+  /** Thumbnail shown at the top of the card */
+  image?: string;
 }
+
+export type ProjectStatus = 'Live' | 'In development' | 'Internship project' | 'Project';
+
+const STATUS_COLOR: Record<ProjectStatus, string> = {
+  Live: '#3ecf8e',
+  'In development': '#ff8e2b',
+  'Internship project': '#6f8aa3',
+  Project: '#6f8aa3',
+};
 
 interface ProjectCardProps {
   repo: GithubRepo;
@@ -113,18 +126,35 @@ export default function ProjectCard({ repo, index }: ProjectCardProps) {
 
         {/* Top Content */}
         <div style={{ transform: 'translateZ(30px)' }} className="relative z-10 pointer-events-none">
+          {repo.image && (
+            <div className="relative -mx-8 -mt-8 mb-6 aspect-video overflow-hidden border-b border-white/10 bg-ink-900">
+              <img
+                src={repo.image}
+                alt={`${repo.name} screenshot`}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover object-top opacity-80 transition-all duration-500 group-hover:scale-[1.03] group-hover:opacity-100"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent" />
+            </div>
+          )}
+
           <div className="mb-4 flex items-center justify-between">
             <span style={{ color: accentColor }} className="text-xs font-bold uppercase tracking-[0.2em]">
-              Repository
+              {String(index + 1).padStart(2, '0')}
             </span>
-            <div className="flex gap-3 text-ink-300">
-              <span className="flex items-center gap-1 text-xs">
-                <Star className="h-3 w-3" /> {repo.stargazers_count}
+            {repo.status && (
+              <span className="flex items-center gap-2 border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-white">
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{
+                    background: STATUS_COLOR[repo.status],
+                    boxShadow: `0 0 6px ${STATUS_COLOR[repo.status]}`,
+                  }}
+                />
+                {repo.status}
               </span>
-              <span className="flex items-center gap-1 text-xs">
-                <GitFork className="h-3 w-3" /> {repo.forks_count}
-              </span>
-            </div>
+            )}
           </div>
           
           <h3 className="mb-4 text-3xl font-black uppercase tracking-tight text-white transition-colors duration-300 group-hover:text-[#B01818]">
