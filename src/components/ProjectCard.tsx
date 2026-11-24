@@ -21,11 +21,18 @@ export interface GithubRepo {
 
 export type ProjectStatus = 'Live' | 'In development' | 'Internship project' | 'Project';
 
-const STATUS_COLOR: Record<ProjectStatus, string> = {
-  Live: '#3ecf8e',
+const STATUS_LABEL: Record<ProjectStatus, string> = {
+  Live: 'Live',
+  'In development': 'In progress',
+  'Internship project': 'Internship',
+  Project: 'Personal',
+};
+
+const STATUS_RULE: Record<ProjectStatus, string> = {
+  Live: '#B01818',
   'In development': '#ff8e2b',
-  'Internship project': '#6f8aa3',
-  Project: '#6f8aa3',
+  'Internship project': 'rgba(255,255,255,0.3)',
+  Project: 'rgba(255,255,255,0.3)',
 };
 
 interface ProjectCardProps {
@@ -146,15 +153,14 @@ export default function ProjectCard({ repo, index }: ProjectCardProps) {
               {String(index + 1).padStart(2, '0')}
             </span>
             {repo.status && (
-              <span className="flex items-center gap-2 border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-white">
-                <span
-                  className="h-1.5 w-1.5 rounded-full"
-                  style={{
-                    background: STATUS_COLOR[repo.status],
-                    boxShadow: `0 0 6px ${STATUS_COLOR[repo.status]}`,
-                  }}
-                />
-                {repo.status}
+              // Editorial label in the site's own style: thin rule + spaced small caps, no pill
+              <span
+                className={`flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.25em] ${
+                  repo.status === 'Live' ? 'text-white' : 'text-ink-300'
+                }`}
+              >
+                <span className="h-px w-6" style={{ background: STATUS_RULE[repo.status] }} />
+                {STATUS_LABEL[repo.status]}
               </span>
             )}
           </div>

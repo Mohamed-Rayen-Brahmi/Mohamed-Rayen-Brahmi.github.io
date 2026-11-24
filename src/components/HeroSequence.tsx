@@ -333,31 +333,21 @@ export default function HeroSequence() {
                   marginBottom: '1.5rem',
                 }}
               >
-                {/* Availability badge (replaces the old "PORTFOLIO" eyebrow, same height) */}
+                {/* Availability eyebrow, in the same style as the section labels: red rule + spaced caps */}
+                <span style={{ width: 32, height: 1, background: '#B01818', display: 'block', flexShrink: 0 }} />
                 <span
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.6rem',
-                    padding: '0.4rem 0.85rem',
-                    border: '1px solid rgba(62,207,142,0.35)',
-                    background: 'rgba(62,207,142,0.08)',
                     fontFamily: "'Inter', system-ui",
-                    fontSize: '0.68rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.2em',
-                    color: '#e8fff4',
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.3em',
+                    color: '#B01818',
                     textTransform: 'uppercase',
+                    whiteSpace: 'nowrap',
                   }}
                 >
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#3ecf8e] opacity-60" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-[#3ecf8e]" />
-                  </span>
-                  <span style={{ whiteSpace: 'nowrap' }}>
-                    Available for work
-                    <span className="hidden lg:inline"> · On-site / Hybrid / Remote</span>
-                  </span>
+                  零 · Open to work
+                  <span className="hidden lg:inline" style={{ color: '#8a8a94' }}> · On-site / Hybrid / Remote</span>
                 </span>
               </motion.div>
 

@@ -79,7 +79,7 @@ const CURATED_PROJECTS: GithubRepo[] = [
     status: 'Project',
     image: '/projects/medtun.webp',
     description: 'Medical appointment booking platform: a Spring Boot REST API with JWT authentication and role-based access for patients, doctors and admins, and a React interface.',
-    html_url: '',
+    html_url: 'https://github.com/Mohamed-Rayen-Brahmi/MedTun',
     homepage: '',
     topics: ['Spring Boot', 'React', 'MySQL', 'JWT'],
     language: 'Java',
