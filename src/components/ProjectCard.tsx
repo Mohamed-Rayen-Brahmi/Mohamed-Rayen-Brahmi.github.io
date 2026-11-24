@@ -90,9 +90,11 @@ export default function ProjectCard({ repo, index }: ProjectCardProps) {
       className="perspective-1000"
     >
       <motion.a
-        href={repo.html_url}
-        target="_blank"
-        rel="noopener noreferrer"
+        // No public link: render a non-clickable card instead of sending people to a generic page
+        href={repo.html_url || undefined}
+        target={repo.html_url ? '_blank' : undefined}
+        rel={repo.html_url ? 'noopener noreferrer' : undefined}
+        aria-disabled={repo.html_url ? undefined : true}
         ref={cardRef}
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
@@ -181,9 +183,11 @@ export default function ProjectCard({ repo, index }: ProjectCardProps) {
             ))}
           </div>
 
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-ink-900 transition-all duration-300 group-hover:scale-110 group-hover:border-[#B01818] group-hover:bg-[#B01818]">
-            <ArrowUpRight className="h-5 w-5 text-white" />
-          </div>
+          {repo.html_url && (
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-ink-900 transition-all duration-300 group-hover:scale-110 group-hover:border-[#B01818] group-hover:bg-[#B01818]">
+              <ArrowUpRight className="h-5 w-5 text-white" />
+            </div>
+          )}
         </div>
       </motion.a>
     </motion.div>

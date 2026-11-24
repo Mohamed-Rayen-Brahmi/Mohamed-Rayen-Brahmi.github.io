@@ -36,7 +36,7 @@ const milestones = [
     year: 'Oct 2026',
     title: 'Mission Carthage Launches',
     description:
-      'Co-founded and launched missioncarthage.tn, a coding platform for Tunisian high-school students. Nearly 500 accounts and 8,600 visits in its last month.',
+      'Built and launched missioncarthage.tn on my own, a coding platform for Tunisian high-school students. Nearly 500 accounts and 8,600 visits in its last month.',
   },
   {
     year: 'Nov 2026',

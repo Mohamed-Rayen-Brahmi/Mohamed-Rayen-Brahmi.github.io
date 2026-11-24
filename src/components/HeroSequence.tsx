@@ -18,7 +18,7 @@
  * so the model has the whole screen to move through. The hero text sits
  * on top via z-index.
  *
- * SCROLL MAP (section height = 320vh):
+ * SCROLL MAP (section height = 170vh):
  *  0%–10%   → initial state, idle bob
  *  10%–65%  → model slides right→center + 360° rotation
  *  65%–78%  → model holds center, scales up, marquee text appears
@@ -120,7 +120,7 @@ export default function HeroSequence() {
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: '+=120%', // keep equal to the section height above minus 100vh
+          end: '+=70%', // keep equal to the section height above minus 100vh
           pin: pin,
           scrub: 1.4,
           anticipatePin: 1,
@@ -231,7 +231,7 @@ export default function HeroSequence() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <div ref={sectionRef} id="home" className="relative" style={{ height: '220vh' }}>
+    <div ref={sectionRef} id="home" className="relative" style={{ height: '170vh' }}>
       <div 
         ref={pinRef} 
         onMouseMove={handleMouseMove}
@@ -404,8 +404,8 @@ export default function HeroSequence() {
                   letterSpacing: '0.01em',
                 }}
               >
-                Full-stack developer in Bizerte, Tunisia. I co-founded and built
-                Mission Carthage, a coding platform with nearly 500 students.
+                Full-stack developer in Bizerte, Tunisia. I built
+                Mission Carthage on my own, a coding platform with nearly 500 students.
               </motion.p>
 
               <motion.div
@@ -561,13 +561,15 @@ export default function HeroSequence() {
         </div>{/* shakeRef */}
 
         {/* ── SCROLL INDICATOR ────────────────────────────────────────── */}
+        {/* Hidden on phones, where it sat on top of the "Contact Me" button */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8, duration: 0.8 }}
+          className="hidden md:flex"
           style={{
             position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)',
-            zIndex: 30, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem',
+            zIndex: 30, flexDirection: 'column', alignItems: 'center', gap: '0.5rem',
             pointerEvents: 'none',
           }}
         >

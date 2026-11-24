@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
-    role: 'Co-founder & Developer',
+    role: 'Developer',
     company: 'Mission Carthage · missioncarthage.tn',
     period: 'Oct 2026 — Present',
     description:
